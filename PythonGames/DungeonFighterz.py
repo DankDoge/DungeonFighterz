@@ -187,8 +187,7 @@ while player.hp and enemy.hp > 0:
 player.place()
 enemy.place()
 typeWriter(f"{win.name} won!")
-typeWriter(f"{lose.name} lost!") # does github shit work?
-print('yipee github works... right?')
+typeWriter(f"{lose.name} lost!")
 
 
     
