@@ -7,7 +7,7 @@ import winsound
 # variables/lists defined before any of the code
 enemyNameList = []
 x=1
-Valid = True
+Repeat = True
 
 # typeWriter function - makes the text look like it's being typed. Speed can be set by the function's 2nd parameter. Default speed is an integer between 2 and 5 as defined by the typSpeed variable
 typSpeed = r.randint(2,5)/100
@@ -101,10 +101,10 @@ def move(choice, attacker, target):
     try:
         int_Choice = int(choice)
     except:
-        print("that is not a valid move try again\n")
+        print("that is not a Repeat move try again\n")
     else:        
-        global Valid
-        Valid = False
+        global Repeat
+        Repeat = False
         if int_Choice == 1:
             dodge = target.dg >= r.randint(1,100)
             dmg = attacker.at * abs(int(dodge)-1)
@@ -119,7 +119,7 @@ def move(choice, attacker, target):
             return f"{attacker.name} healed {heal_pcent}% or {plus_heal} hp!"
         elif int_Choice > len(moveList):
             print('Make sure to pick a value between 1 and', len(moveList))
-            Valid = True
+            Repeat = True
         else:
             pass
 
@@ -176,18 +176,19 @@ while player.hp and enemy.hp > 0:
 {enemy.name}'s Health: {enemy.hp}/{enemy.oghp}
           """)
     typeWriter(moveStr)
-    while Valid:
+    while Repeat:
         Pchoice = input()
         Pmove = move(Pchoice, player, enemy)
     typeWriter("\n" + Pmove)
     typeWriter(move(r.randint(1,1), enemy, player) + "\n")
-    Valid = True
+    Repeat = True
 
 # we're in the endgame now, time to see by how much you lost!
 player.place()
 enemy.place()
 typeWriter(f"{win.name} won!")
 typeWriter(f"{lose.name} lost!")
+
 
 
     
