@@ -1,19 +1,17 @@
-# importing libraries - tpeWriter is used for making text seem like it's been typed
 import random as r
 from time import sleep as s
 import sys
 import winsound
 
-# variables/lists defined before any of the code
 enemyNameList = []
-x=1
+num=1
 Repeat = True
 
 # typeWriter function - makes the text look like it's being typed. Speed can be set by the function's 2nd parameter. Default speed is an integer between 2 and 5 as defined by the typSpeed variable
 typSpeed = r.randint(2,5)/100
 def typeWriter(message, speed=0):
-    for x in message:
-        print(x, end='', flush=True)
+    for char in message:
+        print(char, end='', flush=True)
         sys.stdout.flush()
         s(speed)
     print("\n", end="")
@@ -146,10 +144,10 @@ typeWriter(f"You have {len(fighterTypes)} options right now")
 
 # used to list all the options for the player to pick. It's made so that all I have to do is just add a new fighter to the FighterType list and the amount listed changes
 for fighters in fighterTypes:
-    if fighters.id == x:
-        message = f"{x}. {fighters.type}"
+    if fighters.id == num:
+        message = f"{num}. {fighters.type}"
         typeWriter(message) 
-    x+=1
+    num+=1
 
 # sets the player and enemy fightertypes
 typeWriter("Select your class by typing either 1,2,etc.")
@@ -192,3 +190,4 @@ typeWriter(f"{lose.name} lost!")
 
 
     
+
